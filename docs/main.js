@@ -1,7 +1,8 @@
-import * as THREE from 'three';
-import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
-import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 
+
+import * as THREE from "https://cdn.jsdelivr.net/gh/mesquite-mocap/mesquite.cc@latest/build-static/three.module.js";
+import { OrbitControls } from "https://cdn.jsdelivr.net/gh/mesquite-mocap/mesquite.cc@latest/build-static/OrbitControls.js";
+import { GLTFLoader } from "https://cdn.jsdelivr.net/gh/mesquite-mocap/mesquite.cc@latest/build-static/GLTFLoader.js";
 const loader = new GLTFLoader();
 
 loader.load('models/dice2.glb', function(gltf) {
@@ -13,7 +14,7 @@ loader.load('models/dice2.glb', function(gltf) {
     scene.background = new THREE.Color(0xffffff);
     scene.add(gltf.scene);
 
-    scene.add(new THREE.AxesHelper(5));
+   // scene.add(new THREE.AxesHelper(5));
 
     const light = new THREE.AmbientLight(0xffffff);
     scene.add(light);
