@@ -38,7 +38,6 @@ loader.load('models/dice2.glb', function(gltf) {
 
   function animate() {
     requestAnimationFrame(animate);
-    rotateModel(1, 1, 1, 1);
     controls.update();
     renderer.render(scene, camera);
   }
@@ -166,7 +165,7 @@ function handleBLEMessage(event) {
     const decoder = new TextDecoder('utf-8');
     const message = decoder.decode(value);
     var args = message.split(" ");
-    setCubeQuaternion(parseFloat(args[0]), parseFloat(args[1]), parseFloat(args[2]), parseFloat(args[3]));
+    rotateModel(parseFloat(args[0]), parseFloat(args[1]), parseFloat(args[2]), parseFloat(args[3]));
     console.log(new Date(), message);
 }
 
