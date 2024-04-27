@@ -1,46 +1,54 @@
-
-
 import * as THREE from "https://cdn.jsdelivr.net/gh/mesquite-mocap/mesquite.cc@latest/build-static/three.module.js";
 import { OrbitControls } from "https://cdn.jsdelivr.net/gh/mesquite-mocap/mesquite.cc@latest/build-static/OrbitControls.js";
 import { GLTFLoader } from "https://cdn.jsdelivr.net/gh/mesquite-mocap/mesquite.cc@latest/build-static/GLTFLoader.js";
 const loader = new GLTFLoader();
 
 loader.load('models/dice2.glb', function(gltf) {
-    const renderer = new THREE.WebGLRenderer();
-    renderer.setSize(window.innerWidth, window.innerHeight);
-    renderer.outputColorSpace = THREE.SRGBColorSpace;
+  const renderer = new THREE.WebGLRenderer();
+  renderer.setSize(window.innerWidth, window.innerHeight);
+  renderer.outputColorSpace = THREE.SRGBColorSpace;
 
-    const scene = new THREE.Scene();
-    scene.background = new THREE.Color(0xffffff);
-    scene.add(gltf.scene);
+  const scene = new THREE.Scene();
+  scene.background = new THREE.Color(0xffffff);
+  scene.add(gltf.scene);
 
-   // scene.add(new THREE.AxesHelper(5));
+  const light = new THREE.AmbientLight(0xffffff);
+  scene.add(light);
 
-    const light = new THREE.AmbientLight(0xffffff);
-    scene.add(light);
+  const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.01, 1000);
+  camera.position.set(0, 0, 10);
+  camera.lookAt(new THREE.Vector3());
+  scene.add(camera);
 
-    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.01, 1000);
-    camera.position.set(0, 0, 10);
-    camera.lookAt(new THREE.Vector3());
-    scene.add(camera);
+  const controls = new OrbitControls(camera, renderer.domElement);
+  controls.update();
 
+  // Reference to the model
+  const model = gltf.scene;
 
+  function rotateModel(x, y, z, w) {
+    // Convert quaternion to Euler angles
+    const quaternion = new THREE.Quaternion(x, y, z, w);
+    const euler = new THREE.Euler().setFromQuaternion(quaternion);
 
-    const controls = new OrbitControls(camera, renderer.domElement);
+    // Apply rotation to the model
+    model.rotation.set(euler.x, euler.y, euler.z);
+  }
+
+  function animate() {
+    requestAnimationFrame(animate);
+    rotateModel(1, 1, 1, 1);
     controls.update();
+    renderer.render(scene, camera);
+  }
 
-    function animate() {
-        requestAnimationFrame(animate);
-        controls.update();
-        renderer.render(scene, camera);
-    }
+  document.body.appendChild(renderer.domElement);
 
-    document.body.appendChild(renderer.domElement);
-
-    animate();
+  animate();
 }, undefined, function(error) {
-    console.error(error);
+  console.error(error);
 });
+
 
 // UUIDs for the service and characteristic
 const serviceUuid = '6e400001-b5a3-f393-e0a9-e50e24dcca9e';
@@ -48,7 +56,6 @@ const characteristicUuid = '6e400002-b5a3-f393-e0a9-e50e24dcca9e';
 
 let devices = [];
 let device_characteristics = [];
-
 
 // send ble message
 
@@ -90,7 +97,6 @@ function onDisconnected(index) {
 }
 
 /* Utils */
-
 // This function keeps calling "toTry" until promise resolves or has
 // retried "max" number of times. First retry has a delay of "delay" seconds.
 // "success" is called upon success.
@@ -122,15 +128,8 @@ async function connect() {
         { namePrefix: "MM-" },
       ]
     }).catch(error => { console.log(error); });
-      
-
-
-  
-
 
     console.log('Connected to device : ', device.name);
-
-
 
     // Connect to the GATT server
     // We also get the name of the Bluetooth device here
@@ -156,15 +155,10 @@ async function connect() {
     
     connect_aux(index);
 
-
-
-
   } catch (error) {
     console.error('An error occurred while connecting:', error);
   }
-
 }
-
 
 function handleBLEMessage(event) {
     const value = event.target.value;
@@ -173,7 +167,6 @@ function handleBLEMessage(event) {
     
     console.log(new Date(), message);
 }
-
 
 // Debounce the connect function
 const debouncedConnect = debounce(connect, 300);
