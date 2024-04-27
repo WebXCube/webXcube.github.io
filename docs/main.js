@@ -182,6 +182,3 @@ window.addEventListener("load", function () {
 });
 document.getElementById('blebtn').addEventListener('click', connect);
 
-function setCubeQuaternion(x, y, z, w) {
-  theModel.quaternion.set(x, y, z, w);
-}
