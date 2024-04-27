@@ -16,6 +16,14 @@ loader.load('models/dice2.glb', function(gltf) {
   const light = new THREE.AmbientLight(0xffffff);
   scene.add(light);
 
+  // add floor
+  const geometry = new THREE.PlaneGeometry(100, 100);
+  const material = new THREE.MeshBasicMaterial({ color: 0x808080, side: THREE.DoubleSide });
+  const plane = new THREE.Mesh(geometry, material);
+  plane.rotation.x = Math.PI / 2;
+  plane.position.y = -1.1;
+  scene.add(plane);
+
   camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.01, 1000);
   camera.position.set(0, 0, 30);
   //camera.lookAt(new THREE.Vector3());
