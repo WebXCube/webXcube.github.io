@@ -156,7 +156,7 @@ function handleBLEMessage(event) {
     const decoder = new TextDecoder('utf-8');
     const message = decoder.decode(value);
     var args = message.split(" ");
-    rotateModel(parseFloat(args[0]), parseFloat(args[1]), parseFloat(args[2]), parseFloat(args[3]));
+    window.rotateModel(parseFloat(args[0]), parseFloat(args[1]), parseFloat(args[2]), parseFloat(args[3]));
     console.log(new Date(), message);
 }
 
