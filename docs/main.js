@@ -10,6 +10,7 @@ loader.load('models/dice2.glb', function(gltf) {
 
   const scene = new THREE.Scene();
   scene.background = new THREE.Color(0xffffff);
+  theModel = gltf.scene;
   scene.add(gltf.scene);
 
   const light = new THREE.AmbientLight(0xffffff);
@@ -164,7 +165,8 @@ function handleBLEMessage(event) {
     const value = event.target.value;
     const decoder = new TextDecoder('utf-8');
     const message = decoder.decode(value);
-    
+    var args = message.split(" ");
+    setCubeQuaternion(parseFloat(args[0]), parseFloat(args[1]), parseFloat(args[2]), parseFloat(args[3]));
     console.log(new Date(), message);
 }
 
@@ -179,3 +181,7 @@ window.addEventListener("load", function () {
   }
 });
 document.getElementById('blebtn').addEventListener('click', connect);
+
+function setCubeQuaternion(x, y, z, w) {
+  theModel.quaternion.set(x, y, z, w);
+}
