@@ -4,11 +4,11 @@ import { GLTFLoader } from "https://cdn.jsdelivr.net/gh/mesquite-mocap/mesquite.
 const loader = new GLTFLoader();
 
 loader.load('models/dice2.glb', function(gltf) {
-  const renderer = new THREE.WebGLRenderer();
+  renderer = new THREE.WebGLRenderer();
   renderer.setSize(window.innerWidth, window.innerHeight);
   renderer.outputColorSpace = THREE.SRGBColorSpace;
 
-  const scene = new THREE.Scene();
+  scene = new THREE.Scene();
   scene.background = new THREE.Color(0xffffff);
   theModel = gltf.scene;
   scene.add(gltf.scene);
@@ -16,7 +16,7 @@ loader.load('models/dice2.glb', function(gltf) {
   const light = new THREE.AmbientLight(0xffffff);
   scene.add(light);
 
-  const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.01, 1000);
+  camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.01, 1000);
   camera.position.set(0, 0, 10);
   camera.lookAt(new THREE.Vector3());
   scene.add(camera);
@@ -26,15 +26,6 @@ loader.load('models/dice2.glb', function(gltf) {
 
   // Reference to the model
   const model = gltf.scene;
-
-  function rotateModel(x, y, z, w) {
-    // Convert quaternion to Euler angles
-    const quaternion = new THREE.Quaternion(x, y, z, w);
-    const euler = new THREE.Euler().setFromQuaternion(quaternion);
-
-    // Apply rotation to the model
-    model.rotation.set(euler.x, euler.y, euler.z);
-  }
 
   function animate() {
     requestAnimationFrame(animate);
