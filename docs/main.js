@@ -17,7 +17,7 @@ loader.load('models/dice2.glb', function(gltf) {
   scene.add(light);
 
   camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.01, 1000);
-  camera.position.set(0, 0, 30);
+  camera.position.set(0, 0, 10);
   //camera.lookAt(new THREE.Vector3());
   scene.add(camera);
 
