@@ -17,8 +17,8 @@ loader.load('models/dice2.glb', function(gltf) {
   scene.add(light);
 
   camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.01, 1000);
-  camera.position.set(0, 0, 10);
-  camera.lookAt(new THREE.Vector3());
+  camera.position.set(0, 0, 30);
+  //camera.lookAt(new THREE.Vector3());
   scene.add(camera);
 
   const controls = new OrbitControls(camera, renderer.domElement);
@@ -156,7 +156,7 @@ function handleBLEMessage(event) {
     const decoder = new TextDecoder('utf-8');
     const message = decoder.decode(value);
     var args = message.split(" ");
-    window.rotateModel(parseFloat(args[0]), parseFloat(args[1]), parseFloat(args[2]), parseFloat(args[3]));
+    window.rotateModel(parseFloat(args[1]), parseFloat(args[2]), parseFloat(args[3]), parseFloat(args[4]));
     console.log(new Date(), message);
 }
 
