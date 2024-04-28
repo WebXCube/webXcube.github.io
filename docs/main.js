@@ -4,7 +4,7 @@ import { GLTFLoader } from "https://cdn.jsdelivr.net/gh/mesquite-mocap/mesquite.
 const loader = new GLTFLoader();
 
 //Loading in the model
-loader.load('models/dice2.glb', function(gltf) { //Change the model path here if you want to load a different model.
+loader.load('models/dice.glb', function(gltf) { //Change the model path here if you want to load a different model.
   renderer = new THREE.WebGLRenderer();
   renderer.setSize(window.innerWidth, window.innerHeight);
   renderer.outputColorSpace = THREE.SRGBColorSpace;
