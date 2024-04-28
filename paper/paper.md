@@ -20,11 +20,11 @@ bibliography: paper.bib
 
 WebXCube incorportates an ESP32 Module with three.js to rotate 3d modules that appear in the browser. There are 3 main parts to this project. 1. The arudino code compiled onto the ESP32C Dev Module to collect motion data and transmit it through bluetooth. 2. The index.html file, from which the user interacts to initiate the bluetooth pairing process that will connect the ESP32C Dev Module to the site and render the scene. 3. The main.js file that imports three.js into the project, loads the glb flie, renders the scene (inlcuding camera, lights, and animation), and handles the bluetooth connection. If everything is compiled correctly, the ESP32 device is on, any users should see the glb file rotate onscreen. 
 
-# Introduction
+# Project Description
 
 The goal of the project was to learn how to use open source products and code to create something. The created product, WebXCube, is an interactive web-bluetooth device used to rotate 3d models that appear in the browser. A cube was printed, with a lid to house the ESP32C Dev Module to track its rotation. This rotation data, collected by the ESP32C Dev Module was printed to the serial monitor so we could identify that the code was working. To get the rotation data from the module, we developed a .JS file, calling the three.js API to build out 3d environments in a web browser using WebGL. This js file also housed the other end of the bluetooth functionality used to transfer the data from the ESP32C Dev Module to the website. The index.html page, while simple is what users can access on the web to test out its functionality. 
 
-# Statement of need
+# Statement of Need
 
 WebXCube is a useful tool that augments the 3d modeling processes. It is possible to rotate models hosted on 3d modeling software including blender or fusion 360, by connecting the WebXCube via bluetooth and physically rotating it. While simple, this brings a tactile feel to the 3d modeling process. No longer is a mouse needed, users can physically rotate and move their model in real time wherever they want. It is a way to bridge the gap between the physcial and digital worlds.
 
