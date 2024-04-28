@@ -36,11 +36,13 @@ WebXCube is a useful tool that augments the 3d modeling processes. It is possibl
 
 # Usage
 
-In order to obtain the same results, please aquire and complie the webxcube.ino file on the ESP32C Dev Module using the arduino IDE. Make sure to turn on the device before you compile the code. If the system is working, the rotational data (four numbers in a "0, 0, 0, 0" format) should be shown in the serial monitor. Then, open the main.js file. To change the model, simply add the desired model desired into the /model folder. Then change the path identified on line 6 of the main.js code to that new model.
+In order to obtain the same results, first aquire and complie the webxcube.ino file on the ESP32C Dev Module using the arduino IDE. Make sure to turn on the device before you compile the code. If the system is working, the rotational data (four numbers in a "0, 0, 0, 0" format) should be shown in the serial monitor. 
 
-Then open the index.html file. Initialize a server by typing into the terminal <code>http-server cmd docs</code>. In the terminal, the server ip address will appear. Currently, this itteration is using http, which the web-bluetooth connection does not like. The way we got around it was to localhost the website, replacing IP address with "localhost.0000", changeing it to the specific port identified in the terminal.
+Second, open the main.js file. To change the model, simply add the desired model desired into the /model folder. Then change the path identified on line 6 of the main.js code to that new model.
 
-Once open, the hosted index.html page will show a static image of the 3d model. With the ESP32 Dev Module on, select the "Connect Bluetooth" button and find the device. When the device has been connected succesfully, the model will begin to rotate. 
+Third, open the index.html file. Initialize a server by typing into the terminal <code>http-server cmd docs</code>. In the terminal, the server IP address will appear. Currently, this itteration of the web-bluetooth connection does not like http, requiring users to host using https. The way we got around this issue is to localhost the site, replacing IP address with "localhost.0000" in the browser. Make sure to use the correct port (the last four numbers in the IP address) identified in the terminal. 
+
+Finaly, with the hosted index.html page open, it will show a static image of the 3d model. Make sure the ESP32 Dev Module is ON, select the "Connect Bluetooth" button and find the device. When the device has been connected succesfully, the model will begin to rotate. 
 
 # Future Functionality
 
@@ -48,7 +50,7 @@ Once open, the hosted index.html page will show a static image of the 3d model. 
 
 # Documentation
 
-All nessesary documentation is avalible on the WebXCube repository. Additonal updates to code will be added periodically. 
+All nessesary documentation is avalible on the WebXCube repository. Additonal updates to the project will be added periodically dependent on addtional functionality created. 
 
 # Acknowledgements
 
