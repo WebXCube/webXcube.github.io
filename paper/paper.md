@@ -12,12 +12,6 @@ authors:
 affiliations:
   - name: Herberger Institute for Design and the Arts, Arizona State University, USA
     index: 1
-  - name: Tejaswi Linge Gowda
-    orcid: 0000-0001-8395-6056 does this need to change?
-    affiliation: "1"
-affiliations:
-  - name: Herberger Institute for Design and the Arts, Arizona State University, USA
-    index: 2
 date: 3 May 2024
 bibliography: paper.bib
 ---
