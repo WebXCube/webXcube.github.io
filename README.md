@@ -1,1 +1,11 @@
 # webXcube.github.io
+
+WebXCube incorportates an ESP32 Module with three.js to rotate 3d modules that appear in the browser. There are 3 main parts to this project. 1. The arudino code compiled onto the ESP32C Dev Module to collect motion data and transmit it through bluetooth. 2. The index.html file, from which the user interacts to initiate the bluetooth pairing process that will connect the ESP32C Dev Module to the site and render the scene. 3. The main.js file that imports three.js into the project, loads the glb flie, renders the scene (inlcuding camera, lights, and animation), and handles the bluetooth connection. If everything is compiled correctly, the ESP32 device is on, any users should see the glb file rotate onscreen. 
+
+In order make everything work, first, please download a copy of each reopository (webXcube.github.io and cubefirmware) on your own machine. Then aquire and complie the webxcube.ino file on the ESP32C Dev Module (or other capable IMU device) using the arduino IDE. Make sure to turn on the device before you compile the code. If the system is working, the rotational data (four numbers in a "0, 0, 0, 0" format) should be shown in the serial monitor. If useing a different IMU system, augment the existing code to the new IMU specifications.
+
+Second, open the main.js file. To change the model, simply add the desired model desired into the /model folder. Then change the path identified on line 6 of the main.js code to that new model.
+
+Third, open the index.html file. Initialize a server by typing into the terminal "http-server cmd docs." The website is live!! Great. Now look for the server IP address will in the terminal. Currently, this itteration of the web-bluetooth connection does not like http and instead requires addtional security provided by https. We cane get around this issue by localhosting the site. To do this, replace the IP address with "localhost.0000" in the browser. Make sure to use the correct port (the last four numbers in the IP address) identified in the terminal. 
+
+Finaly, with the hosted index.html page open, it will show a static image of the 3d model. Make sure the ESP32 Dev Module is ON, select the "Connect Bluetooth" button and find the device. When the device has been connected succesfully, the model will begin to rotate.
