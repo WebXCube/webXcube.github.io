@@ -7,7 +7,8 @@ tags:
   - ESP32CDev
 authors:
   - name: Alex Hales
-    orcid: 0000-0001-8395-6056 does this need to change?
+    affiliation: "1"
+  - name: Tejaswi Linge Gowda
     affiliation: "1"
 affiliations:
   - name: Herberger Institute for Design and the Arts, Arizona State University, USA
@@ -48,7 +49,6 @@ All nessesary documentation is avalible on the WebXCube repository. Additonal up
 
 # Acknowledgements
 
-Professor Tejaswi Linge Gowda - Mentor and friend
 
 # References
 
